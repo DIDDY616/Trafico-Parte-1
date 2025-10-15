@@ -23,6 +23,13 @@ route("/simulations/:id") do
     println(payload(:id))
     model = instances[payload(:id)]
     run!(model, 1)
+    
+    for car in allagents(model)
+        if car.id == 1
+            println("Carro1Pos: ", car.pos)
+        end
+    end
+    
     cars = []
     for car in allagents(model)
         push!(cars, car)
